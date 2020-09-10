@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLINK</title>
+</head>
+<style>
+    html {
+        font-size: 62.5%;
+    }
+
+
+    /********** SPLASH ************/
+    #splash_section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 1fr;
+    }
+
+    #splash_section :nth-child(1) {
+        grid-column: 3/ span 1;
+        grid-row: 1/ span 1;
+        width: 150px;
+        z-index: 10;
+    }
+
+    #splash_section :nth-child(2) {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span 4;
+        width: 100%;
+        height: 100vh;
+        object-fit: contain;
+    }
+
+    button {
+        padding: 20px;
+        border: 1px solid grey;
+        background-color: RGBA(0, 14, 5, 0.3);
+        margin: 0 auto;
+        position: fixed;
+        left: 42%;
+        top: 50%;
+        font-family: sans-serif;
+        font-size: 3rem;
+    }
+
+    button:hover {
+        color: white;
+        background-color: RGBA(0, 14, 5, 0.2);
+
+    }
+
+    .hide {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 1s, opacity 1s linear;
+    }
+
+    .pulse {
+        animation-name: pulse_kf;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+    }
+
+    @keyframes pulse_kf {
+        0% {
+            transform: scale(0.90);
+        }
+
+        50% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(0.90);
+        }
+    }
+
+    /************* FORSIDE / MAINPAGE ***************/
+
+    #forside {
+        overflow: hidden;
+    }
+
+    header {
+        max-width: 1100px;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    header img {
+        width: 200px;
+    }
+
+</style>
+
+<body>
+
+    <section id="splash_section" class="">
+        <img src="logo_placeholder.jpg" alt="klink_logo">
+        <img src="splash_placeholder.jpg" alt="">
+        <button class="pulse">START MIXING</button>
+    </section>
+
+
+    <section id="forside" class="hide">
+        <template>
+            <article id="drinks">
+                <h2 class="navn"></h2>
+                <img src="" alt="">
+            </article>
+        </template>
+
+        <header>
+            <img src="logo_placeholder.jpg" alt="" class="filter valgt" data-kategori="alle">
+            <img src="logo_placeholder.jpg" alt="" class="filter" data-kategori="gin">
+            <img src="logo_placeholder.jpg" alt="" class="filter" data-kategori="vodka">
+            <img src="logo_placeholder.jpg" alt="" class="filter" data-kategori="rom">
+            <img src="logo_placeholder.jpg" alt="" class="filter" data-kategori="tequila">
+        </header>
+    </section>
+
+
+
+</body>
+
+<script>
+    document.querySelector("button").addEventListener("click", buttonClicked);
+
+    function buttonClicked() {
+        console.log(buttonClicked);
+        document.querySelector("#forside").classList.remove("hide");
+        document.querySelector("#splash_section").classList.add("hide");
+    };
+
+</script>
+
+</html>
